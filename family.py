@@ -26,6 +26,7 @@ class Doraemon_family:
 
     # のび太
     # 通常はランダム、前回勝っていた場合は同じ手を出す
+
     def nobita_hand(self):
         # のび太の名前の取得
         nobi = members()[1]
@@ -76,7 +77,7 @@ class Doraemon_family:
             members()[2]: self.dorachan_hand(),
             members()[3]: self.suneo_hand(),
             members()[4]: self.dorami_hand()
-            }
+        }
 
     # 最初の人の手
     def f_hand(self):
