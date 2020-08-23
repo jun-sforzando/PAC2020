@@ -11,6 +11,10 @@
      - 勝負回数は `10000` 以下の整数のみ
    - e.g. `python main.py --first 骨川スネ夫 --second 源静香 --trials 3`
 
+## Test
+
+- ターミナルで `pytest --capture=no test_family.py` を実行
+
 ## Refrences
 
 - [Python でじゃんけんポイっ 初心者向け(回答と解説）](https://qiita.com/sandream/items/01374069f447b7748eba)
