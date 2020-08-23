@@ -34,7 +34,3 @@
 - [python でコーディング規約(pep8)に準拠しているかチェック方法](https://qiita.com/HyunwookPark/items/b54baf66710ca5fa647a)
 - [Python で小数点以下の桁数を指定する方法を現役エンジニアが解説【初心者向け】](https://techacademy.jp/magazine/23378)
 - [Python の%演算子による文字列フォーマット](https://qiita.com/takahiro_itazuri/items/e585b46d096036bc837f)
-
-## Miscellaneous
-
-備考
