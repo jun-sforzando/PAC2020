@@ -1,6 +1,6 @@
 from family import Doraemon_family
 from janken import pats
-import pytest
+from tqdm import tqdm
 
 # ジャンケンの手の名前を取得
 guu = pats()[0]
@@ -18,7 +18,7 @@ def test_shizuka_guu():
     # カウントする変数
     count = 0
     # 10000回実行した時のグーの結果をカウントする
-    for i in range(10000):
+    for i in tqdm(range(10000)):
         dora = Doraemon_family("", "", "", "", "")
         shizuka = dora.shizuka_hand()
         if shizuka == guu:
@@ -33,7 +33,7 @@ def test_shizuka_cho():
     # カウントする変数
     count = 0
     # 10000回実行した時のチョキの結果をカウントする
-    for i in range(10000):
+    for i in tqdm(range(10000)):
         dora = Doraemon_family("", "", "", "", "")
         shizuka = dora.shizuka_hand()
         if shizuka == cho:
@@ -48,7 +48,7 @@ def test_shizuka_paa():
     # カウントする変数
     count = 0
     # 10000回実行した時のパーの結果をカウントする
-    for i in range(10000):
+    for i in tqdm(range(10000)):
         dora = Doraemon_family("", "", "", "", "")
         shizuka = dora.shizuka_hand()
         if shizuka == paa:
@@ -63,7 +63,7 @@ def test_dorami_guu():
     # カウントする変数
     count = 0
     # 10000回実行した時のパーの結果をカウントする
-    for i in range(10000):
+    for i in tqdm(range(10000)):
         dora = Doraemon_family("", "", "", "", "")
         dorami = dora.dorami_hand()
         if dorami == guu:
@@ -78,7 +78,7 @@ def test_dorami_cho():
     # カウントする変数
     count = 0
     # 10000回実行した時のパーの結果をカウントする
-    for i in range(10000):
+    for i in tqdm(range(10000)):
         dora = Doraemon_family("", "", "", "", "")
         dorami = dora.dorami_hand()
         if dorami == cho:
@@ -93,7 +93,7 @@ def test_dorami_paa():
     # カウントする変数
     count = 0
     # 10000回実行した時のパーの結果をカウントする
-    for i in range(10000):
+    for i in tqdm(range(10000)):
         dora = Doraemon_family("", "", "", "", "")
         dorami = dora.dorami_hand()
         if dorami == paa:
