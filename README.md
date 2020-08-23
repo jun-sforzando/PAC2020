@@ -3,9 +3,8 @@
 ## Requirements
 
 - Python 3.8.5
-
-- pytest 6.0.1
-- tqdm 4.48.2
+  - pytest 6.0.1
+  - tqdm 4.48.2
 
 ## Setup
 
