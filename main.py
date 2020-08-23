@@ -64,9 +64,9 @@ if __name__ == "__main__":
     # 引数の指定
     parser = argparse.ArgumentParser()
     parser.add_argument("--first", type=str,
-                        default=members()[0], choices=members())
+                        default=members()[2], choices=members())
     parser.add_argument("--second", type=str,
-                        default=members()[1], choices=members())
+                        default=members()[2], choices=members())
     parser.add_argument("--trials", type=int, default=10)
     args = parser.parse_args()
 
