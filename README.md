@@ -2,15 +2,14 @@
 
 ## How to Run
 
-1. `git clone https://github.com/jun-sforzando/PAC2020.git` を実行してファイルを取得
-1. ターミナルで `python3 -m venv PAC2020/venv`を実行して仮想環境を作成
-1. `cd PAC2020` を実行して `PAC2020`ディレクトリに移動
+1. ターミナルで `python3 -m venv venv` を実行して仮想環境を作成
 1. `source venv/bin/activate` を実行
-1. `--first`, `--second` にキャラクター名、 `--trails` に勝負回数を指定し、 `python main.py` を実行することでジャンケンができる
-   e.g. `python main.py --first 骨川スネ夫 --second 源静香 --trials 3`
-
-- `--first`、`--second` で使用できるキャラクター名は `源静香` 、 `野比のび太` 、 `ドラえもん` 、 `骨川スネ夫` 、 `ドラミ`
-- `--trials` で使用できる数字は 10000 以下の整数
+1. `python main.py` を実行することでジャンケンができる
+1. また、オプションを追加した実行も可能
+   - `--first`, `--second` にキャラクター名、 `--trails` に勝負回数を指定
+     - キャラクター名は `源静香` 、 `野比のび太` 、 `ドラえもん` 、 `骨川スネ夫` 、 `ドラミ` から選択可能
+     - 勝負回数は `10000` 以下の整数のみ
+   - e.g. `python main.py --first 骨川スネ夫 --second 源静香 --trials 3`
 
 ## Refrences
 
