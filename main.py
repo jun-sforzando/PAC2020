@@ -59,4 +59,15 @@ def main(first: str, second: str, trials: int):
 
 
 if __name__ == "__main__":
-    main("骨川スネ夫", "ドラミ", 10)
+    import argparse
+
+    # 引数の指定
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--first", type=str,
+                        default=members()[2], choices=members())
+    parser.add_argument("--second", type=str,
+                        default=members()[2], choices=members())
+    parser.add_argument("--trials", type=int, default=10)
+    args = parser.parse_args()
+
+    main(args.first, args.second, args.trials)

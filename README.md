@@ -2,15 +2,14 @@
 
 ## How to Run
 
-1. ターミナルで `python3 venv -m venv`を実行して仮想環境を作成
-2. `main.py`, `family.py`, `janken.py` を 作成した `doraemon` ディレクトリに移動
-3. `source venv/bin/activate` を実行
-4. `main.py` をエディターで開く
-5. `main()` の第一引数と第二引数にジャンケンをするキャラクターの名前を `str` でそれぞれ入力
-6. 第三引数にはジャンケンの勝負数を `int` で 10000 以下の数字を入力
-7. ターミナルで `python main.py` を入力して実行
-
-使用できるキャラクター名は `源静香` 、 `野比のび太` 、 `ドラえもん` 、 `骨川スネ夫` 、 `ドラミ`
+1. ターミナルで `python3 -m venv venv` を実行して仮想環境を作成
+1. `source venv/bin/activate` を実行
+1. `python main.py` を実行することでジャンケンができる
+1. また、オプションを追加した実行も可能
+   - `--first`, `--second` にキャラクター名、 `--trails` に勝負回数を指定
+     - キャラクター名は `源静香` 、 `野比のび太` 、 `ドラえもん` 、 `骨川スネ夫` 、 `ドラミ` から選択可能
+     - 勝負回数は `10000` 以下の整数のみ
+   - e.g. `python main.py --first 骨川スネ夫 --second 源静香 --trials 3`
 
 ## Refrences
 
