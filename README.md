@@ -1,9 +1,16 @@
 # Python Ability Check 2020 - <前田純>
 
+## Requirement
+
+- pytest 6.0.1
+- tqdm 4.48.2
+
 ## How to Run
 
 1. ターミナルで `python3 -m venv venv` を実行して仮想環境を作成
 1. `source venv/bin/activate` を実行
+1. `pip install pytest` を実行
+1. `pip install tqdm` を実行
 1. `python main.py` を実行することでジャンケンができる
 1. また、オプションを追加した実行も可能
    - `--first`, `--second` にキャラクター名、 `--trails` に勝負回数を指定
