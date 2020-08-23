@@ -1,8 +1,9 @@
 # Python Ability Check 2020 - <前田純>
 
-## Requirement
+## Requirements
 
 - Python 3.8.5
+
 - pytest 6.0.1
 - tqdm 4.48.2
 
