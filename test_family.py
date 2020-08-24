@@ -17,7 +17,7 @@ win = judge_result()[0]
 lose = judge_result()[1]
 
 
-# 静香ちゃんがグーを出す時の確率チェック
+# 静香ちゃんが出す手の確率チェック
 def test_shizuka():
     # それぞれの手をカウントする変数
     guu_count = 0
@@ -40,7 +40,7 @@ def test_shizuka():
     assert san_zen <= paa_count / 10000 <= san_go
 
 
-# ドラミちゃんがグーを出す時の確率チェック
+# ドラミちゃんが出す手の確率チェック
 def test_dorami_guu():
     # それぞれの手をカウントする変数
     guu_count = 0
@@ -80,7 +80,7 @@ def test_doraemon_guu():
     assert per == 1.0
 
 
-# スネ夫が出すチョキのチェック
+# スネ夫が出す手のチェック
 def test_suneo():
     # それぞれの手をカウントする変数
     guu_count = 0
