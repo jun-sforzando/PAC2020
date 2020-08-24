@@ -1,7 +1,8 @@
 from family import Doraemon_family, members
-from janken import pats, judge_result
+from janken import pats, judge_result, jankenpon
 from tqdm import tqdm
 import random
+import pytest
 
 # ジャンケンの手の名前を取得
 guu = pats()[0]
@@ -166,3 +167,8 @@ def test_nobita_second_lose():
             count += 1
     # 100%ならOK
     assert count == 10000
+
+
+def test_jankenpon():
+    with pytest.raises(ValueError):
+        assert jankenpon("野比のび太", "野比せわし")
