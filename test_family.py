@@ -172,3 +172,7 @@ def test_nobita_second_lose():
 def test_jankenpon():
     with pytest.raises(ValueError):
         assert jankenpon("野比のび太", "野比せわし")
+    with pytest.raises(TypeError):
+        assert jankenpon(1, "ドラえもん")
+    with pytest.raises(TypeError):
+        assert jankenpon("ドラえもん", 1)
