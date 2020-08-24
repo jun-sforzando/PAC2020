@@ -168,11 +168,16 @@ def test_nobita_second_lose():
     # 100%ならOK
     assert count == 10000
 
+# ジャンケンをしたときの引数の値をチェック
+
 
 def test_jankenpon():
+    # 間違った文字列が入っていた場合
     with pytest.raises(ValueError):
-        assert jankenpon("野比のび太", "野比せわし")
+        assert jankenpon("グー", "バー")
+    # firstに数字が入っていた場合
     with pytest.raises(TypeError):
-        assert jankenpon(1, "ドラえもん")
+        assert jankenpon(1, "チョキ")
+    # secondに数字が入っていた場合
     with pytest.raises(TypeError):
-        assert jankenpon("ドラえもん", 1)
+        assert jankenpon("パー", 1)
