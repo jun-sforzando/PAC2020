@@ -168,10 +168,22 @@ def test_nobita_second_lose():
     # 100%ならOK
     assert count == 10000
 
-# ジャンケンをしたときの引数の値をチェック
 
-
+# ジャンケンしたときの結果のチェック
 def test_jankenpon():
+    assert jankenpon("グー", "グー") == "Draw"
+    assert jankenpon("グー", "チョキ") == "Win"
+    assert jankenpon("グー", "パー") == "Lose"
+    assert jankenpon("チョキ", "グー") == "Lose"
+    assert jankenpon("チョキ", "パー") == "Win"
+    assert jankenpon("チョキ", "チョキ") == "Draw"
+    assert jankenpon("パー", "グー") == "Win"
+    assert jankenpon("パー", "チョキ") == "Lose"
+    assert jankenpon("パー", "パー") == "Draw"
+
+
+# ジャンケンをしたときの引数の値をチェック
+def test_jankenpon_failure():
     # 間違った文字列が入っていた場合
     with pytest.raises(ValueError):
         assert jankenpon("グー", "バー")
