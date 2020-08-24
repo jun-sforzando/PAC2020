@@ -1,6 +1,8 @@
-from family import Doraemon_family
-from janken import pats
+from family import Doraemon_family, members
+from janken import pats, judge_result, jankenpon
 from tqdm import tqdm
+import random
+import pytest
 
 # ジャンケンの手の名前を取得
 guu = pats()[0]
@@ -12,92 +14,182 @@ sanbun = 1 / 3
 san_zen = sanbun - 0.1
 san_go = sanbun + 0.1
 
+win = judge_result()[0]
+lose = judge_result()[1]
 
-# 静香ちゃんがグーを出す時の確率チェック
-def test_shizuka_guu():
+
+# 静香ちゃんが出す手の確率チェック
+def test_shizuka():
+    # それぞれの手をカウントする変数
+    guu_count = 0
+    cho_count = 0
+    paa_count = 0
+    # 10000回実行した時のグーの結果をカウントする
+    for i in tqdm(range(10000)):
+        dora = Doraemon_family("", "", "", "", "")
+        shizuka = dora.shizuka_hand()
+        # 出した手をそれぞれカウントしていく
+        if shizuka == guu:
+            guu_count += 1
+        if shizuka == cho:
+            cho_count += 1
+        if shizuka == paa:
+            paa_count += 1
+    # それぞれの手が1/3の前後10％ならOK
+    assert san_zen <= guu_count / 10000 <= san_go
+    assert san_zen <= cho_count / 10000 <= san_go
+    assert san_zen <= paa_count / 10000 <= san_go
+
+
+# ドラミちゃんが出す手の確率チェック
+def test_dorami_guu():
+    # それぞれの手をカウントする変数
+    guu_count = 0
+    cho_count = 0
+    paa_count = 0
+    # 10000回実行した時のグーの結果をカウントする
+    for i in tqdm(range(10000)):
+        dora = Doraemon_family("", "", "", "", "")
+        dorami = dora.dorami_hand()
+        # 出した手をそれぞれカウントしていく
+        if dorami == guu:
+            guu_count += 1
+        if dorami == cho:
+            cho_count += 1
+        if dorami == paa:
+            paa_count += 1
+    # グーは50%の前後10%ならOK
+    assert 0.4 <= guu_count / 10000 <= 0.6
+    # チョキは25%の前後10%ならOK
+    assert 0.15 <= cho_count / 10000 <= 0.35
+    # パーは25%の前後10%ならOK
+    assert 0.15 <= paa_count / 10000 <= 0.35
+
+
+# ドラえもんが必ずグーを出すチェック
+def test_doraemon_guu():
     # カウントする変数
     count = 0
     # 10000回実行した時のグーの結果をカウントする
     for i in tqdm(range(10000)):
         dora = Doraemon_family("", "", "", "", "")
-        shizuka = dora.shizuka_hand()
-        if shizuka == guu:
+        dorachan = dora.dorachan_hand()
+        if dorachan == guu:
             count += 1
     per = count / 10000
-    # 1/3の前後10%ならOK
-    assert san_zen <= per <= san_go
+    # 全てグーならならOK
+    assert per == 1.0
 
 
-# 静香ちゃんがチョキを出す時の確率チェック
-def test_shizuka_cho():
-    # カウントする変数
-    count = 0
-    # 10000回実行した時のチョキの結果をカウントする
+# スネ夫が出す手のチェック
+def test_suneo():
+    # それぞれの手をカウントする変数
+    guu_count = 0
+    cho_count = 0
+    paa_count = 0
+    # 10000回実行した時のグーの結果をカウントする
     for i in tqdm(range(10000)):
         dora = Doraemon_family("", "", "", "", "")
-        shizuka = dora.shizuka_hand()
-        if shizuka == cho:
-            count += 1
-    per = count / 10000
-    # 1/3の前後10%ならOK
-    assert san_zen <= per <= san_go
+        suneo = dora.suneo_hand()
+        # 出した手をそれぞれカウントしていく
+        if suneo == guu:
+            guu_count += 1
+        if suneo == cho:
+            cho_count += 1
+        if suneo == paa:
+            paa_count += 1
+    # グーは0ならOK
+    assert guu_count == 0
+    # チョキは50%の前後10%ならOK
+    assert 0.4 <= cho_count / 10000 <= 0.6
+    # パーは50%の前後10%ならOK
+    assert 0.4 <= paa_count / 10000 <= 0.6
 
 
-# 静香ちゃんがパーを出す時の確率チェック
-def test_shizuka_paa():
-    # カウントする変数
-    count = 0
-    # 10000回実行した時のパーの結果をカウントする
+# 通常ののび太出す手の確率チェック
+def test_nobita():
+    # それぞれの手をカウントする変数
+    guu_count = 0
+    cho_count = 0
+    paa_count = 0
+    # 10000回実行した時のグーの結果をカウントする
     for i in tqdm(range(10000)):
         dora = Doraemon_family("", "", "", "", "")
-        shizuka = dora.shizuka_hand()
-        if shizuka == paa:
-            count += 1
-    per = count / 10000
-    # 1/3の前後10%ならOK
-    assert san_zen <= per <= san_go
+        nobita = dora.nobita_hand()
+        # 出した手をそれぞれカウントしていく
+        if nobita == guu:
+            guu_count += 1
+        if nobita == cho:
+            cho_count += 1
+        if nobita == paa:
+            paa_count += 1
+    # それぞれの手が1/3の前後10％ならOK
+    assert san_zen <= guu_count / 10000 <= san_go
+    assert san_zen <= cho_count / 10000 <= san_go
+    assert san_zen <= paa_count / 10000 <= san_go
 
 
-# ドラミちゃんがグーを出す時の確率チェック
-def test_dorami_guu():
+# 前回firstで勝ったのび太が前回と同じ手を出すかチェック
+def test_nobita_first_win():
     # カウントする変数
     count = 0
-    # 10000回実行した時のパーの結果をカウントする
+    # のび太の名前を取得
+    nobita_name = members()[1]
+    # グーチョキパーをランダムで出す
+    janken_randam = random.choice(pats())
+    # 前回と同じ手を必ず出しているか10000回チェック
     for i in tqdm(range(10000)):
-        dora = Doraemon_family("", "", "", "", "")
-        dorami = dora.dorami_hand()
-        if dorami == guu:
+        # 前回firstののび太が勝った後ののび太の手をランダムで作成
+        dora = Doraemon_family(nobita_name, "", win, janken_randam, "")
+        nobita = dora.nobita_hand()
+        # 前回の自分(first)と同じ手を出していればカウントする
+        if nobita == dora.first_before:
             count += 1
-    per = count / 10000
-    # 50%の前後10%ならOK
-    assert 0.4 <= per <= 0.6
+    # すべての勝負で同じ手を出していたらOK
+    assert count == 10000
 
 
-# ドラミちゃんがチョキを出す時の確率チェック
-def test_dorami_cho():
+# 前回secondで相手を負けさせたのび太が前回と同じ手を出すかチェック
+def test_nobita_second_lose():
     # カウントする変数
     count = 0
-    # 10000回実行した時のパーの結果をカウントする
+    # のび太の名前を取得
+    nobita_name = members()[1]
+    # グーチョキパーをランダムで出す
+    janken_randam = random.choice(pats())
+    # 前回と同じ手を必ず出しているか10000回チェック
     for i in tqdm(range(10000)):
-        dora = Doraemon_family("", "", "", "", "")
-        dorami = dora.dorami_hand()
-        if dorami == cho:
+        # 前回secondののび太が勝った後ののび太の手をランダムで作成
+        dora = Doraemon_family("", nobita_name, lose, "", janken_randam)
+        nobita = dora.nobita_hand()
+        # 前回の自分(second)と同じ手を出していればカウントする
+        if nobita == dora.second_before:
             count += 1
-    per = count / 10000
-    # 25%の前後10%ならOK
-    assert 0.15 <= per <= 0.35
+    # 100%ならOK
+    assert count == 10000
 
 
-# ドラミちゃんがパーを出す時の確率チェック
-def test_dorami_paa():
-    # カウントする変数
-    count = 0
-    # 10000回実行した時のパーの結果をカウントする
-    for i in tqdm(range(10000)):
-        dora = Doraemon_family("", "", "", "", "")
-        dorami = dora.dorami_hand()
-        if dorami == paa:
-            count += 1
-    per = count / 10000
-    # 25%の前後10%ならOK
-    assert 0.15 <= per <= 0.35
+# ジャンケンしたときの結果のチェック
+def test_jankenpon():
+    assert jankenpon("グー", "グー") == "Draw"
+    assert jankenpon("グー", "チョキ") == "Win"
+    assert jankenpon("グー", "パー") == "Lose"
+    assert jankenpon("チョキ", "グー") == "Lose"
+    assert jankenpon("チョキ", "パー") == "Win"
+    assert jankenpon("チョキ", "チョキ") == "Draw"
+    assert jankenpon("パー", "グー") == "Win"
+    assert jankenpon("パー", "チョキ") == "Lose"
+    assert jankenpon("パー", "パー") == "Draw"
+
+
+# ジャンケンをしたときの引数の値をチェック
+def test_jankenpon_failure():
+    # 間違った文字列が入っていた場合
+    with pytest.raises(ValueError):
+        assert jankenpon("グー", "バー")
+    # firstに数字が入っていた場合
+    with pytest.raises(TypeError):
+        assert jankenpon(1, "チョキ")
+    # secondに数字が入っていた場合
+    with pytest.raises(TypeError):
+        assert jankenpon("パー", 1)

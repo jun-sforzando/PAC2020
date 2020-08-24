@@ -20,6 +20,11 @@ def jankenpon(first, second):
     guu = pats()[0]
     cho = pats()[1]
     paa = pats()[2]
+    # もしfirstとsecondに数字を入れた場合の処理
+    if type(first) == int:
+        raise TypeError("数字ではなく文字を入力してください")
+    if type(second) == int:
+        raise TypeError("数字ではなく文字を入力してください")
     if first in pats() and second in pats():
         # あいこの時
         if first == second:
